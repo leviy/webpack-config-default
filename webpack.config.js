@@ -22,7 +22,6 @@ module.exports = new Config().defaults({
         ],
     },
     output: {
-        path: path.resolve(__dirname, 'public/dist'),
         filename: '[name].js',
     },
     module: {
