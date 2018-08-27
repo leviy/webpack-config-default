@@ -1,8 +1,9 @@
 const { Config, environment } = require('webpack-config');
 
-const path = require('path');
 const webpack = require('webpack');
 
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefix = require('autoprefixer');
 
@@ -10,8 +11,10 @@ environment.setAll({
     env: () => process.env.WEBPACK_ENV,
 });
 
-const mode = process.env.WEBPACK_ENV === 'development' ? 'development' : 'production';
-const devtool = process.env.WEBPACK_ENV === 'development' ? 'inline-source-map' : '';
+const development = process.env.WEBPACK_ENV === 'development';
+
+const mode = development ? 'development' : 'production';
+const devtool = development ? 'inline-source-map' : '';
 
 module.exports = new Config().defaults({
     mode: mode,
@@ -22,7 +25,7 @@ module.exports = new Config().defaults({
         ],
     },
     output: {
-        filename: '[name].js',
+        filename: development ? '[name].js' : '[name].[hash].js',
     },
     module: {
         rules: [
@@ -61,7 +64,7 @@ module.exports = new Config().defaults({
                     {
                         loader: 'file-loader',
                         options: {
-                            name: 'images/[name].[hash:8].[ext]',
+                            name: development ? 'images/[name].[ext]' : 'images/[name].[hash].[ext]',
                         },
                     },
                 ],
@@ -73,8 +76,15 @@ module.exports = new Config().defaults({
             $: 'jquery',
             jQuery: 'jquery',
         }),
+        new CleanWebpackPlugin(['public/dist'], {
+            exclude: ['resources'],
+        }),
         new MiniCssExtractPlugin({
-            filename: '[name].css',
+            filename: development ? '[name].css' : '[name].[hash].css',
+        }),
+        new ManifestPlugin({
+            basePath: 'dist/',
+            publicPath: 'dist/',
         }),
     ],
 });
