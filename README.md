@@ -25,6 +25,27 @@ module.exports = new Config()
     .extend('@leviy/webpack-config-default/webpack.config.js');
 ```
 
+## Manifest & Symfony
+
+A `manifest.json` file will created by default. To use this manifest together with a Symfony application
+just add this to the `config/packages/framework.yaml` configuration:
+
+```yaml
+framework:
+  ...
+
+  assets:
+    json_manifest_path: '%kernel.project_dir%/public/dist/manifest.json'
+```
+
+Referencing an asset from templates should be done with the `asset` twig function:
+
+```twig
+{{ asset('dist/app.js') }}
+```
+
+Symfony is then able to figure out the correct location of the asset based on the configured manifest file.
+
 ## Customize
 
 With `.set(path, configuration)` you can replace the given configuration `path` completely.
