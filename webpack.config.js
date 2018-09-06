@@ -35,7 +35,6 @@ module.exports = new Config().defaults({
             },
             {
                 test: /\.js$/,
-                exclude: /node_modules\/(?!(bootstrap|daemonite-material)\/).*/,
                 loader: 'babel-loader',
             },
             {
