@@ -2,7 +2,6 @@ const { Config, environment } = require('webpack-config');
 
 const webpack = require('webpack');
 
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefix = require('autoprefixer');
@@ -74,9 +73,6 @@ module.exports = new Config().defaults({
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
-        }),
-        new CleanWebpackPlugin(['public/dist'], {
-            exclude: ['resources'],
         }),
         new MiniCssExtractPlugin({
             filename: development ? '[name].css' : '[name].[hash].css',
