@@ -1,32 +1,33 @@
 {
     "name": "@leviy/webpack-config-default",
-    "version": "2.0.2",
+    "version": "3.0.0",
     "repository": {
         "type": "git",
         "url": "git+ssh://git@github.com:leviy/webpack-config-default.git"
     },
     "homepage": "https://github.com/leviy/webpack-config-default/",
     "dependencies": {
-        "babel-loader": "^7.1",
-        "css-loader": "^0.28",
-        "file-loader": "^1.1",
-        "mini-css-extract-plugin": "^0.4",
-        "postcss-loader": "^2.1",
-        "sass-loader": "^7.0",
-        "twig-loader": "^0.4",
+        "autoprefixer": "^9.6",
+        "babel-loader": "^8.0",
+        "css-loader": "^3.1",
+        "file-loader": "^4.1",
+        "mini-css-extract-plugin": "^0.8",
+        "postcss-loader": "^3.0",
+        "sass-loader": "^7.1",
+        "twig-loader": "^0.5",
         "webpack-config": "^7.5",
         "webpack-manifest-plugin": "^2.0"
     },
     "devDependencies": {
-        "node-sass": "^4.9",
-        "webpack": "^4.8",
-        "webpack-cli": "^2.1",
+        "node-sass": "^4.12",
+        "webpack": "^4.39",
+        "webpack-cli": "^3.3",
         "webpack-config": "^7.5"
     },
     "peerDependencies": {
-        "node-sass": "^4.9",
-        "webpack": "^4.8",
-        "webpack-cli": "^2.1",
+        "node-sass": "^4.12",
+        "webpack": "^4.39",
+        "webpack-cli": "^3.3",
         "webpack-config": "^7.5"
     }
 }
