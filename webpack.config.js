@@ -34,6 +34,7 @@ module.exports = new Config().defaults({
             },
             {
                 test: /\.js$/,
+                exclude: /@babel(?:\/|\\{1,2})runtime|core-js/,
                 loader: 'babel-loader',
             },
             {
