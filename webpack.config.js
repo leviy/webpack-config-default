@@ -30,7 +30,7 @@ module.exports = new Config().defaults({
         rules: [
             {
                 test: /\.twig$/,
-                loader: 'twig-loader',
+                loader: 'twigjs-loader',
             },
             {
                 test: /\.js$/,
