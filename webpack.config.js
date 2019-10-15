@@ -1,5 +1,6 @@
 const { Config, environment } = require('webpack-config');
 
+const path = require('path');
 const webpack = require('webpack');
 
 const ManifestPlugin = require('webpack-manifest-plugin');
@@ -31,6 +32,9 @@ module.exports = new Config().defaults({
             {
                 test: /\.twig$/,
                 loader: 'twigjs-loader',
+                options: {
+                    twigPath: path.resolve(process.cwd(), 'node_modules/twig'),
+                },
             },
             {
                 test: /\.js$/,
