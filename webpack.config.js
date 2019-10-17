@@ -33,7 +33,14 @@ module.exports = new Config().defaults({
                 test: /\.twig$/,
                 loader: 'twigjs-loader',
                 options: {
-                    twigPath: path.resolve(process.cwd(), 'node_modules/twig'),
+                    renderTemplate(twigData, dependencies) {
+                        return `
+                            ${dependencies}
+                            var twig = require('${path.resolve(process.cwd(), 'node_modules/twig')}').twig;
+                            var tpl = twig(${JSON.stringify(twigData)});
+                            module.exports = function(context) { return tpl.render(context); };
+                        `;
+                    },
                 },
             },
             {
