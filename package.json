@@ -1,6 +1,6 @@
 {
     "name": "@leviy/webpack-config-default",
-    "version": "3.0.1",
+    "version": "3.1.0",
     "repository": {
         "type": "git",
         "url": "git+ssh://git@github.com:leviy/webpack-config-default.git"
@@ -14,7 +14,7 @@
         "mini-css-extract-plugin": "^0.8",
         "postcss-loader": "^3.0",
         "sass-loader": "^7.1",
-        "twig-loader": "^0.5",
+        "twigjs-loader": "^1.0",
         "webpack-config": "^7.5",
         "webpack-manifest-plugin": "^2.0"
     },

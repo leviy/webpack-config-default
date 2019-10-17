@@ -1,5 +1,6 @@
 const { Config, environment } = require('webpack-config');
 
+const path = require('path');
 const webpack = require('webpack');
 
 const ManifestPlugin = require('webpack-manifest-plugin');
@@ -30,7 +31,17 @@ module.exports = new Config().defaults({
         rules: [
             {
                 test: /\.twig$/,
-                loader: 'twig-loader',
+                loader: 'twigjs-loader',
+                options: {
+                    renderTemplate(twigData, dependencies) {
+                        return `
+                            ${dependencies}
+                            var twig = require('${path.resolve(process.cwd(), 'node_modules/twig')}').twig;
+                            var tpl = twig(${JSON.stringify(twigData)});
+                            module.exports = function(context) { return tpl.render(context); };
+                        `;
+                    },
+                },
             },
             {
                 test: /\.js$/,
