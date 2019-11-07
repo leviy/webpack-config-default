@@ -1,6 +1,6 @@
 {
     "name": "@leviy/webpack-config-default",
-    "version": "3.1.0",
+    "version": "0.0.0",
     "repository": {
         "type": "git",
         "url": "git+ssh://git@github.com:leviy/webpack-config-default.git"
