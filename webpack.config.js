@@ -1,4 +1,4 @@
-const { Config, environment } = require('webpack-config');
+const { Config, environment } = require('@leviy/webpack-config');
 
 const path = require('path');
 const webpack = require('webpack');
