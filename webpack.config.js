@@ -34,6 +34,8 @@ module.exports = new Config().defaults({
                 loader: 'twigjs-loader',
                 options: {
                     renderTemplate(twigData, dependencies) {
+                        twigData.autoescape = true;
+
                         return `
                             ${dependencies}
                             var twig = require('${path.resolve(process.cwd(), 'node_modules/twig')}').twig;
